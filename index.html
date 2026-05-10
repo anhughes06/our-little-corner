@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Little Corner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --rose:       #c97b84;
+  --rose-light: #f5e6e8;
+  --rose-mid:   #e8bfc4;
+  --cream:      #fdf6f0;
+  --terra:      #c4845a;
+  --brown:      #7a4f3a;
+  --text:       #4a3728;
+  --text-light: #9a7b6b;
+  --white:      #fffaf7;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+
+nav {
+  display: flex; justify-content: center; gap: 2rem;
+  padding: 1.2rem 2rem; background: var(--white);
+  border-bottom: 1px solid var(--rose-mid);
+  position: sticky; top: 0; z-index: 100;
+}
+nav a { text-decoration: none; color: var(--text-light); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+nav a:hover { color: var(--rose); }
+
+section { padding: 4rem 1.5rem; }
+.section-label { text-align: center; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.5rem; }
+.section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); color: var(--brown); margin-bottom: 2.5rem; }
+
+/* Hero */
+#hero { text-align: center; padding: 5rem 1.5rem 4rem; background: var(--white); }
+.heart-divider { color: var(--rose); font-size: 1.2rem; letter-spacing: 0.4rem; margin-bottom: 1.2rem; }
+#hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.6rem); color: var(--brown); line-height: 1.2; margin-bottom: 0.6rem; }
+#hero h1 em { font-style: italic; color: var(--rose); }
+#hero p { font-size: 1rem; color: var(--text-light); font-weight: 300; letter-spacing: 0.06em; margin-top: 0.8rem; }
+
+/* Countdown */
+#countdown { background: var(--rose-light); }
+.countdown-destination { text-align: center; font-size: 1rem; color: var(--text-light); margin-bottom: 0.3rem; letter-spacing: 0.05em; }
+.countdown-destination strong { color: var(--terra); font-weight: 400; }
+.countdown-date { text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--rose); margin-bottom: 2rem; }
+.clock { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.clock-unit { background: var(--white); border: 1px solid var(--rose-mid); border-radius: 12px; padding: 1.2rem 1.4rem; text-align: center; min-width: 80px; }
+.clock-unit .num { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--brown); line-height: 1; }
+.clock-unit .lbl { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); margin-top: 0.3rem; }
+.days-total { text-align: center; font-size: 0.88rem; color: var(--text-light); font-style: italic; margin-bottom: 1.5rem; }
+.days-total strong { color: var(--rose); }
+
+/* Timeline */
+#timeline { background: var(--white); }
+.timeline-list { max-width: 600px; margin: 0 auto; position: relative; }
+.timeline-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 1.5px; background: var(--rose-mid); transform: translateX(-50%); }
+.trip-card { display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2.4rem; position: relative; }
+.trip-card:nth-child(odd) { flex-direction: row-reverse; text-align: right; }
+.trip-dot { position: absolute; left: 50%; top: 0.6rem; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: var(--rose); border: 2px solid var(--white); z-index: 2; }
+.trip-box { flex: 1; background: var(--cream); border: 1px solid var(--rose-mid); border-radius: 12px; padding: 1rem 1.2rem; }
+.trip-meta { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--terra); text-transform: uppercase; margin-bottom: 0.3rem; }
+.trip-place { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--brown); margin-bottom: 0.3rem; }
+.trip-note { font-size: 0.85rem; color: var(--text-light); font-style: italic; line-height: 1.5; }
+
+/* Footer */
+footer { background: var(--brown); color: var(--rose-light); text-align: center; padding: 2.5rem 1.5rem; }
+footer p { font-size: 0.85rem; line-height: 2; }
+footer .big { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; color: var(--rose-mid); }
+footer .hearts { font-size: 1.2rem; letter-spacing: 0.3rem; color: var(--rose); margin-top: 0.4rem; }
+
+@media (max-width: 520px) {
+  .timeline-line { display: none; }
+  .trip-card, .trip-card:nth-child(odd) { flex-direction: column; text-align: left; }
+  .trip-dot { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero">Home</a>
+  <a href="#countdown">Countdown</a>
+  <a href="#timeline">Our trips</a>
+</nav>
+
+<section id="hero">
+  <div class="heart-divider">♡ ♡ ♡</div>
+  <h1 id="hero-title"></h1>
+  <p id="hero-sub"></p>
+</section>
+
+<section id="countdown">
+  <p class="section-label">next visit</p>
+  <h2 class="section-title">counting the sleeps</h2>
+  <div class="countdown-destination"></div>
+  <div class="countdown-date" id="dest-date"></div>
+  <div class="clock">
+    <div class="clock-unit"><div class="num" id="cd-d">--</div><div class="lbl">days</div></div>
+    <div class="clock-unit"><div class="num" id="cd-h">--</div><div class="lbl">hours</div></div>
+    <div class="clock-unit"><div class="num" id="cd-m">--</div><div class="lbl">mins</div></div>
+    <div class="clock-unit"><div class="num" id="cd-s">--</div><div class="lbl">secs</div></div>
+  </div>
+  <p class="days-total" id="days-apart-msg"></p>
+</section>
+
+<section id="timeline">
+  <p class="section-label">our story so far</p>
+  <h2 class="section-title">every mile, worth it</h2>
+  <div class="timeline-list" id="trip-list">
+    <div class="timeline-line"></div>
+  </div>
+</section>
+
+<footer>
+  <p class="big" id="footer-names"></p>
+  <p id="footer-days"></p>
+  <div class="hearts">♡ ♡ ♡</div>
+</footer>
+
+<script>
+// ── state.js ──────────────────────────────────────
+const state = {
+  names:       'Andrew & Hannah',
+  tagline:     'closing the distance, one trip at a time',
+  subtitle:    'a little corner of the internet, just for us',
+  destination: 'Iowa City, IA',
+  traveller:   'Andrew',
+  tripDate:    '2026-06-20',
+  trips: [
+    { place: 'Cabo San Lucas', date: 'January 5, 2025',   note: 'i owe this city so much for introducing us to each other' },
+    { place: 'Iowa City, IA',  date: 'February 17, 2025', note: 'my first time in my favorite city in the world:)' },
+    { place: 'Iowa City, IA',  date: 'April 18, 2025',    note: 'you liked me enough to let me come again!' },
+  ],
+};
+
+// ── main.js ───────────────────────────────────────
+function renderHero() {
+  const [a, b] = state.names.split('&').map(s => s.trim());
+  document.getElementById('hero-title').innerHTML = `${a} <em>&</em> ${b}<br><em>${state.tagline}</em>`;
+  document.getElementById('hero-sub').textContent = state.subtitle;
+  document.getElementById('footer-names').textContent = state.names;
+}
+
+function renderFooter() {
+  const n = state.trips.length;
+  document.getElementById('footer-days').textContent = n > 0
+    ? `${n} trip${n !== 1 ? 's' : ''} together · every one worth every mile`
+    : 'your story starts here';
+}
+
+// ── timeline.js ───────────────────────────────────
+function renderTrips() {
+  const list = document.getElementById('trip-list');
+  list.innerHTML = '<div class="timeline-line"></div>';
+  state.trips.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'trip-card';
+    card.innerHTML = `
+      <div class="trip-dot"></div>
+      <div class="trip-box">
+        <div class="trip-meta">${t.date}</div>
+        <div class="trip-place">${t.place}</div>
+        ${t.note ? `<div class="trip-note">${t.note}</div>` : ''}
+      </div>
+      <div style="flex:1"></div>`;
+    list.appendChild(card);
+  });
+}
+
+// ── countdown.js ──────────────────────────────────
+function renderCountdownMeta() {
+  document.querySelector('.countdown-destination').innerHTML =
+    `${state.traveller} is heading to <strong>${state.destination}</strong>`;
+  if (state.tripDate) {
+    const [y, m, d] = state.tripDate.split('-').map(Number);
+    document.getElementById('dest-date').textContent =
+      new Date(y, m - 1, d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+}
+
+function tickCountdown() {
+  if (!state.tripDate) return;
+  const now = new Date();
+  const [y, m, d] = state.tripDate.split('-').map(Number);
+  const target = new Date(y, m - 1, d);
+  const diff = target - now;
+  if (diff <= 0) {
+    ['cd-d','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent = '0');
+    document.getElementById('days-apart-msg').innerHTML = 'the day is here! 🎉';
+    return;
+  }
+  const days = Math.floor(diff / 86_400_000);
+  const hrs  = Math.floor((diff % 86_400_000) / 3_600_000);
+  const mins = Math.floor((diff % 3_600_000)  / 60_000);
+  const secs = Math.floor((diff % 60_000)     / 1_000);
+  document.getElementById('cd-d').textContent = days;
+  document.getElementById('cd-h').textContent = String(hrs).padStart(2, '0');
+  document.getElementById('cd-m').textContent = String(mins).padStart(2, '0');
+  document.getElementById('cd-s').textContent = String(secs).padStart(2, '0');
+  document.getElementById('days-apart-msg').innerHTML =
+    `<strong>${days}</strong> more sleeps until we're together again ♡`;
+}
+
+// ── init ──────────────────────────────────────────
+renderHero();
+renderCountdownMeta();
+renderTrips();
+renderFooter();
+tickCountdown();
+setInterval(tickCountdown, 1000);
+</script>
+</body>
+</html>
